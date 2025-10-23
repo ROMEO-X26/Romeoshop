@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Romeo Trader | Romeo Business Man</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
+    body{background:linear-gradient(135deg,#1e1e2f,#2b2b44);color:white;transition:background .6s,color .6s;overflow-x:hidden;}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:15px 30px;background:rgba(255,255,255,0.05);
+      border-bottom:1px solid rgba(255,255,255,0.1);position:sticky;top:0;z-index:100;}
+    nav h2{font-weight:700;font-size:16px;background:linear-gradient(45deg,#ff4d6d,#00b4d8,#ffcc00);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-left:-10px;}
+    nav ul{list-style:none;display:flex;align-items:center;gap:25px;}
+    nav ul li{margin-right:-5px;cursor:pointer;color:#00b4d8;position:relative;}
+    nav ul li::after{content:"";position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#00b4d8;transition:.3s;}
+    nav ul li:hover::after{width:100%;}
+    .theme-toggle{width:55px;height:28px;border-radius:20px;background:rgba(255,255,255,0.2);
+      display:flex;align-items:center;padding:3px;cursor:pointer;transition:background .4s;}
+    .toggle-circle{width:22px;height:22px;border-radius:50%;background:#fff;display:flex;
+      align-items:center;justify-content:center;font-size:14px;transition:transform .4s,background .4s;}
+    body.light .toggle-circle{transform:translateX(27px);background:#f1c40f;}
+    .language-select{background:rgba(255,255,255,0.1);border:none;color:white;padding:3px 3px;
+      font-size:13px;border-radius:6px;cursor:pointer;min-width:85px;}
+    body.light .language-select{color:#333;background:rgba(0,0,0,0.05);}
+    .hero{text-align:center;padding:120px 20px;background:url('IMG_20251022_213941_219.jpg') no-repeat center/cover;position:relative;}
+    .hero::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,0.4);}
+    .hero-content{position:relative;z-index:1;}
+    .flip-wrap{width:140px;height:140px;margin:auto;perspective:1000px;}
+    .flip-card{width:100%;height:100%;position:relative;transform-style:preserve-3d;
+      animation:spinY 2.4s linear infinite alternate;border-radius:50%;overflow:hidden;}
+    .face{position:absolute;inset:0;backface-visibility:hidden;}
+    .back{transform:rotateY(180deg);}
+    .face img{width:100%;height:100%;object-fit:cover;}
+    @keyframes spinY{0%{transform:rotateY(0);}100%{transform:rotateY(180deg);}}
+    .caption{margin-top:18px;color:rgba(255,255,255,0.85);}
+    .service{display:none;text-align:center;padding:60px 20px;background:rgba(255,255,255,0.03);
+      border-top:1px solid rgba(255,255,255,0.1);animation:fadeIn .6s ease;}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+    .service h3{font-size:22px;margin-bottom:20px;color:#00b4d8;}
+    .service ul{list-style:none;margin-top:10px;display:inline-block;text-align:left;}
+    .service ul li{margin:10px 0;font-size:16px;display:flex;align-items:center;gap:10px;}
+    .icon{font-size:20px;color:#ffcc00;}
+    .trust-list i{color:#00b4d8;margin-right:6px;font-size:17px;}
+    body.light{background:linear-gradient(135deg,#f7f9fb,#dfe9f3);color:#444;}
+    body.light nav{background:rgba(0,0,0,0.05);}
+    body.light .service{background:rgba(0,0,0,0.05);color:#444;}
+  </style>
+</head>
+
+<body>
+  <nav>
+    <h2 id="title">ROMEO Trader</h2>
+    <ul>
+      <li id="myServiceBtn">My Service</li>
+      
+        <select class="language-select" id="languageSelect">
+          <option value="en">English</option>
+          <option value="am">አማርኛ</option>
+          <option value="ti">ትግርኛ</option>
+          <option value="om">Afaan Oro</option>
+        </select>
+      </li>
+      <li>
+        <div class="theme-toggle" id="themeToggle">
+          <div class="toggle-circle">🌙</div>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="flip-wrap">
+        <div class="flip-card">
+          <div class="face"><img src="IMG_20251022_213941_010.jpg"></div>
+          <div class="face back"><img src="IMG_20251022_213941_293.jpg"></div>
+        </div>
+      </div>
+      <div class="caption" id="caption">Tap to contact on Telegram</div>
+      <button onclick="openTelegram()" id="contactBtn"
+        style="margin-top:18px;background:#00b4d8;color:white;border:none;padding:10px 18px;border-radius:8px;cursor:pointer;">
+        Contact Me
+      </button>
+    </div>
+  </section>
+
+  <section class="service" id="serviceSection">
+    <h3 id="welcome">Hy welcome to Romeo’s store</h3>
+    <ul>
+      <li><span class="icon"><i class="fa-brands fa-telegram"></i></span><span id="srv1">Old Telegram group buying</span></li>
+      <li><span class="icon"><i class="fa-solid fa-chart-line"></i></span><span id="srv2">Telegram channel 1K+ good view buying</span></li>
+      <li><span class="icon"><i class="fa-solid fa-handshake"></i></span><span id="srv3">Escrow service for goods & services</span></li>
+      <li><span class="icon"><i class="fa-solid fa-video"></i></span><span id="srv4">TikTok, Instagram, YouTube buy & sell</span></li>
+    </ul>
+    <p class="trust-list" style="margin-top:25px;line-height:1.6;">
+      <i class="fa-solid fa-circle-check"></i><span id="trust1">Trusted buyer</span><br>
+      <i class="fa-solid fa-circle-check"></i><span id="trust2">Fast payment</span><br>
+      <i class="fa-solid fa-circle-check"></i><span id="trust3">Clear and honest process</span>
+    </p>
+  </section>
+
+  <footer style="text-align:center;padding:15px;background:rgba(255,255,255,0.05);
+    border-top:1px solid rgba(255,255,255,0.1);color:#ccc;font-size:14px;">
+    © 2025 Romeo-Trader | All Rights Reserved
+  </footer>
+
+  <script>
+    function openTelegram(){window.open("https://t.me/ROMEOXE","_blank");}
+
+    const body=document.body;
+    const toggle=document.getElementById("themeToggle");
+    const circle=toggle.querySelector(".toggle-circle");
+    const savedTheme=localStorage.getItem("theme");
+    if(savedTheme==="light"){body.classList.add("light");circle.textContent="☀️";}
+    toggle.addEventListener("click",()=>{
+      body.classList.toggle("light");
+      const isLight=body.classList.contains("light");
+      circle.textContent=isLight?"☀️":"🌙";
+      localStorage.setItem("theme",isLight?"light":"dark");
+    });
+
+    document.getElementById("myServiceBtn").onclick=()=>{
+      document.getElementById("serviceSection").style.display="block";
+      window.scrollTo({top:document.getElementById("serviceSection").offsetTop,behavior:'smooth'});
+    };
+
+    // Translation text
+    const translations={
+      en:{
+        title:"ROMEO Trader",
+        myServiceBtn:"My Service",
+        caption:"Tap to contact on Telegram",
+        contactBtn:"Contact Me",
+        welcome:"Hy welcome to Romeo’s store",
+        srv1:"Old Telegram group buying",
+        srv2:"Telegram channel 1K+ good view buying",
+        srv3:"Escrow service for goods & services",
+        srv4:"TikTok, Instagram, YouTube buy & sell",
+        trust1:"Trusted buyer",
+        trust2:"Fast payment",
+        trust3:"Clear and honest process"
+      },
+      am:{
+        title:"ሮሜዮ ንግድ ሰው",
+        myServiceBtn:"አገልግሎቶቼ",
+        caption:"በቴሌግራም ለመነጋገር ይንኩ",
+        contactBtn:"አግኙኝ",
+        welcome:"እንኳን ወደ ሮሜዮ መደብር በደህና መጡ",
+        srv1:"የቆዩ ቴሌግራም ቡድን ግዢ",
+        srv2:"1K+ ተመልካች ያላቸው ቴሌግራም ቻናሎች ግዢ",
+        srv3:"የእቃና አገልግሎት ኤስክሮ አገልግሎት",
+        srv4:"ቲክቶክ፣ ኢንስታግራም፣ ዩቱብ ግዢ እና ሽያጭ",
+        trust1:"የታመነ ገዢ",
+        trust2:"ፈጣን ክፍያ",
+        trust3:"ግልጽና እውነተኛ ሂደት"
+      },
+      ti:{
+        title:"ሮሜዮ ባለንግድ",
+        myServiceBtn:"ኣገልግሎታተይ",
+        caption:"ብቴለግራም ንዝያዳ ጠውቑ",
+        contactBtn:"ንዝያዳ ደውሉ",
+        welcome:"እንቋዕ ብሰላም መጻኹም ናብ ሮሜዮ መደብር",
+        srv1:"ኣብ ቴለግራም ድሕሪት ቡድን ግዛእ",
+        srv2:"1K+ መመልከቲ ዘለዎ ቻናል ግዛእ",
+        srv3:"ኤስክሮ ኣገልግሎት ንምሕዳር እቃታትን ኣገልግሎታትን",
+        srv4:"ቲክቶክ፣ ኢንስታግራም፣ ዩቱብ ግዛእን ሽያጭን",
+        trust1:"ተዓመኒ ገዛኢ",
+        trust2:"ብፍጥነት ክፍሊ",
+        trust3:"ግልጽን ትክክልን ሂደት"
+      },
+      om:{
+        title:"Romeo Daldalaa",
+        myServiceBtn:"Tajaajiloota Koo",
+        caption:"Telegram irratti qunnamaa",
+        contactBtn:"Na qunnamaa",
+        welcome:"Baga gara dukaana Romeo dhuftan",
+        srv1:"Garee Telegram durii bituu",
+        srv2:"Kinaalii Telegram 1K+ ilaalaa bituu",
+        srv3:"Tajaajila escrow oomisha fi tajaajilaaf",
+        srv4:"TikTok, Instagram, YouTube bituu fi gurguruu",
+        trust1:"Bittaa amanamaa",
+        trust2:"Kaffaltii saffisaa",
+        trust3:"Adeemsa ifaa fi dhugaa"
+      }
+    };
+
+    const langSelect=document.getElementById("languageSelect");
+    const elements={
+      title:"title",
+      myServiceBtn:"myServiceBtn",
+      caption:"caption",
+      contactBtn:"contactBtn",
+      welcome:"welcome",
+      srv1:"srv1",
+      srv2:"srv2",
+      srv3:"srv3",
+      srv4:"srv4",
+      trust1:"trust1",
+      trust2:"trust2",
+      trust3:"trust3"
+    };
+
+    langSelect.addEventListener("change",()=>{
+      const lang=langSelect.value;
+      localStorage.setItem("language",lang);
+      applyLanguage(lang);
+    });
+
+    function applyLanguage(lang){
+      const data=translations[lang]||translations.en;
+      for(const key in elements){
+        document.getElementById(elements[key]).textContent=data[key];
+      }
+    }
+
+    const savedLang=localStorage.getItem("language")||"en";
+    langSelect.value=savedLang;
+    applyLanguage(savedLang);
+  </script>
+</body>
+</html>
